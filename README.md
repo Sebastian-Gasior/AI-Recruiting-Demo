@@ -12,10 +12,10 @@ Dieses Projekt ist eine **Machbarkeitsstudie** und demonstriert:
 - Strukturierte Bewertung und Empfehlungen
 - Browser-basierte Ergebnis-Anzeige mit 4 Tabs
 
-## Warniung!!!
-Das ist eine Machbarkeitstudie und NICHT für den aktiven Gebrauch gedacht.
-Alle Daten werden von OpenAI analysiert und somit an das Unternehmen übergeben.
-Es sollte unbedingt mit den Demo-Lebensläufen gearbeitet werden!
+## ⚠️ Warnung
+
+Dies ist eine **Machbarkeitsstudie** und NICHT für den produktiven Einsatz gedacht.
+Alle Daten werden von OpenAI analysiert und somit an das Unternehmen übergeben. Es sollte **unbedingt nur mit Demo-Lebensläufen** gearbeitet werden!
 
 ## 🚀 Quick Start
 
@@ -78,17 +78,17 @@ AI-Recruiting-Demo/
 └── docs/              # Projekt-Dokumentation
 ```
 
-## Projekt Bilder
+## 📸 Projekt Bilder
 
-![AI-Recruting-DEMO](Bilder/00-AI-Recruting.jpg)
+![AI-Recruiting-DEMO](Bilder/00-AI-Recruiting.jpg)
 
 **Upload & Auswertung**
-- Job Matching Score 
-- Gesamtbewertung (CV + Persönlichkeit) falls Persönlichkeits-Test absolviert
+- Job Matching Score
+- Gesamtbewertung (CV + Persönlichkeit) falls Persönlichkeitstest absolviert
 - Anforderungen-Abgleich
-    - MUST-HAVE (60% Gewichtung)
-    - SHOULD-HAVE (30% Gewichtung)
-    - NICE-TO-HAVE (10% Gewichtung)
+  - MUST-HAVE (60% Gewichtung)
+  - SHOULD-HAVE (30% Gewichtung)
+  - NICE-TO-HAVE (10% Gewichtung)
 - Gap Analysis
 - Persönliche Informationen
 - Berufserfahrung
@@ -118,7 +118,6 @@ AI-Recruiting-Demo/
 - **AI/LLM**: OpenAI API (GPT-4o-mini)
 - **Environment**: Python 3.11+, uv
 
-
 ## 🚀 Deployment
 
 Das Projekt kann auf **Netcup Webhosting 4000 NUE** deployt werden:
@@ -126,7 +125,6 @@ Das Projekt kann auf **Netcup Webhosting 4000 NUE** deployt werden:
 - ✅ Flask WSGI via Phusion Passenger
 - ✅ SSH-Zugriff für Setup
 - ✅ 512 MB Memory Limit pro Prozess
-
 
 **Schnellstart**:
 1. `passenger_wsgi.py` und `.htaccess.example` anpassen
@@ -148,10 +146,8 @@ Demo-Projekt - Alle Rechte vorbehalten.
 
 ## 👤 Autor
 
-Sebastian Gasior
-AI Recruiting Demo Feasibility Study
-
----
+Sebastian Gasior  
+AI Recruiting Demo - Machbarkeitsstudie
 
 
 
