@@ -68,6 +68,8 @@ Dieses Projekt ist eine **Machbarkeitsstudie** und demonstriert:
 Dies ist eine **Machbarkeitsstudie** und NICHT für den produktiven Einsatz gedacht.
 Alle Daten werden von OpenAI analysiert und somit an das Unternehmen übergeben. Es sollte **unbedingt nur mit Demo-Lebensläufen** gearbeitet werden!
 
+---
+
 ## 🚀 Quick Start
 
 ### 1. Environment Setup (mit uv)
@@ -133,6 +135,8 @@ AI-Recruiting-Demo/
 
 ![AI-Recruiting-DEMO](Bilder/00-AI-Recruiting.jpg)
 
+---
+
 **Upload & Auswertung**
 - Job Matching Score
 - Gesamtbewertung (CV + Persönlichkeit) falls Persönlichkeitstest absolviert
@@ -149,12 +153,17 @@ AI-Recruiting-Demo/
 
 ![Analyse-Ergebnisse](Bilder/01-Auswertung.jpg)
 
+---
+
 **Stellenausschreibung**
 - MUST-HAVE ANFORDERUNGEN
 - SHOULD-HAVE ANFORDERUNGEN
 - NICE-TO-HAVE ANFORDERUNGEN
 
+
 ![Stellenausschreibung](Bilder/02-Stellenausschreibung.jpg)
+
+---
 
 **Persönlichkeitstest**
 - 30 Fragen
