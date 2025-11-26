@@ -12,6 +12,57 @@ Dieses Projekt ist eine **Machbarkeitsstudie** und demonstriert:
 - Strukturierte Bewertung und Empfehlungen
 - Browser-basierte Ergebnis-Anzeige mit 4 Tabs
 
+## 🎯 **AKTUELLER FUNKTIONSUMFANG**
+
+### **1. CV-Upload & Analyse**
+- ✅ PDF Upload (max 10MB)
+- ✅ File Validation (Type, Size, Magic Number)
+- ✅ PDF Text Extraction (inkl. Tabellen)
+- ✅ AI-powered CV Analysis (OpenAI GPT-4o-mini)
+- ✅ Automatic File Cleanup
+
+### **2. Job Requirements Matching**
+- ✅ 40 strukturierte Skills (Must/Should/Nice-to-Have)
+- ✅ Semantisches Matching (AI erkennt verwandte Skills)
+- ✅ Skill-by-Skill Evidence aus CV
+- ✅ Gewichtetes Scoring (60% / 30% / 10%)
+- ✅ Gap Analysis (Was fehlt? Was passt?)
+- ✅ Match Level (Excellent / Good / Partial / Poor)
+
+### **3. Presentation Mode (4 Tabs)**
+- ✅ **Tab 1**: Upload & Auswertung
+  - Job Matching Score (73/100)
+  - Progress-Bars (volle Breite, Prozentsätze)
+  - Requirements-Matching Tabellen (✓/✗ mit Nachweisen)
+  - Gap Analysis
+  - CV-Details (Berufserfahrung, Ausbildung, Skills)
+- ✅ **Tab 2**: Stellenausschreibung (40 Requirements)
+- ✅ **Tab 3**: System-Info (Wie funktioniert es?)
+- ✅ **Tab 4**: Big Five Personality Test (IPIP-30, 30 Fragen)
+
+### **4. UI/UX Features**
+- ✅ Professional Design (Gradient Background)
+- ✅ Farbcodierung (Grün ✓ / Rot ✗)
+- ✅ Progress-Bars mit Prozentsatz-Boxen
+- ✅ Card-Style für Experience/Education
+- ✅ Hover-Effekte
+- ✅ Responsive Design (Mobile-ready)
+- ✅ Client-Side Tab Switching (kein Reload)
+- ✅ Session Management (Results bleiben bis Reload)
+
+### **5. Big Five Personality Assessment** 🧠 (NEW!)
+- ✅ IPIP-30 Fragebogen (30 Fragen aus Pool von 60, zufällig ausgewählt)
+- ✅ 5-Punkt Likert-Skala (1-5)
+- ✅ OCEAN Score Berechnung (O, C, E, A, N)
+- ✅ **Job-spezifisches Persönlichkeitsprofil** in Job Requirements definierbar
+- ✅ Personality Fit Score (job-spezifisch basierend auf Idealwerten oder Fallback)
+- ✅ Optional Test (nicht mandatory)
+- ✅ Test in Tab 4 (nach CV-Upload)
+- ✅ Ergebnis-Visualisierung (Progress-Bars + Interpretation)
+- ✅ Combined Score Integration (70% CV + 30% Personality)
+
+---
+
 ## ⚠️ Warnung
 
 Dies ist eine **Machbarkeitsstudie** und NICHT für den produktiven Einsatz gedacht.
