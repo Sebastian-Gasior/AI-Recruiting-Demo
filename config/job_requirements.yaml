@@ -1,0 +1,165 @@
+# Job Requirements Configuration
+# Strukturierte Anforderungen für automatischen CV-Abgleich
+
+positions:
+  - position_id: "power-bi-dev-fttx"
+    position_title: "Power BI Entwickler / Data Warehouse (FTTx)"
+    department: "IT / Data Analytics"
+    
+    # ========================================
+    # PERSÖNLICHKEITSPROFIL (Big Five)
+    # Gewünschte OCEAN-Scores für diese Position
+    # ========================================
+    personality_profile:
+      # Idealwerte für OCEAN-Dimensionen (6-30 Skala)
+      # Gewichtung: Wie wichtig ist jede Dimension für diese Position? (0.0-1.0, Summe sollte 1.0 sein)
+      dimensions:
+        C:  # Conscientiousness (Gewissenhaftigkeit) - sehr wichtig für technische Positionen
+          ideal_score: 24  # Hoch gewünscht (24/30)
+          weight: 0.40  # 40% Gewichtung im Personality Fit Score
+          min_score: 18  # Minimum akzeptabel (18/30)
+        
+        O:  # Openness (Offenheit) - wichtig für Innovation und neue Technologien
+          ideal_score: 22  # Mittel-Hoch (22/30)
+          weight: 0.20  # 20% Gewichtung
+        
+        E:  # Extraversion - mäßig wichtig für Teamarbeit
+          ideal_score: 18  # Mittel (18/30)
+          weight: 0.15  # 15% Gewichtung
+        
+        A:  # Agreeableness (Verträglichkeit) - wichtig für Zusammenarbeit
+          ideal_score: 20  # Mittel (20/30)
+          weight: 0.15  # 15% Gewichtung
+        
+        N:  # Neuroticism (Neurotizismus) - niedrig gewünscht = emotional stabil
+          ideal_score: 12  # Niedrig gewünscht = stabil (12/30, umgekehrt gewertet)
+          weight: 0.10  # 10% Gewichtung
+          reversed: true  # Niedrigere Scores sind besser für Neuroticism
+    
+    # ========================================
+    # MUST-HAVE (60% Gewichtung)
+    # Grundlegende Eignung
+    # ========================================
+    must_have:
+      - category: "Power BI & Datenvisualisierung"
+        weight: 0.25  # 25% von Must-Have
+        skills:
+          - "Power BI Reports"
+          - "Power BI Dashboards"
+          - "Power BI Datenmodelle"
+          - "DAX (sehr gute Kenntnisse)"
+          - "Power Query (M)"
+      
+      - category: "Datenmodellierung & Datenarchitektur"
+        weight: 0.30  # 30% von Must-Have
+        skills:
+          - "Datenmodellierung (auch Grundkenntnisse)"
+          - "Datentransformation (z.B. Power Query, ETL)"
+          - "Datenoptimierung (z.B. Datenbereinigung, Performance)"
+          - "Star-Schema (auch Grundkenntnisse)"
+          - "Snowflake-Schema (auch Grundkenntnisse)"
+          - "Data Warehouse Strukturen (auch Grundverständnis)"
+          - "SQL-Datenbanken (SQL Server, Azure Synapse, Snowflake, MySQL, PostgreSQL, etc.)"
+      
+      - category: "ETL & Datenintegration"
+        weight: 0.20  # 20% von Must-Have
+        skills:
+          - "ETL-Prozesse (Konzeption, Entwicklung ODER Mitwirkung)"
+          - "ETL-Verständnis (auch durch Power Query, Data Flows)"
+          - "Datentransformation (z.B. Power Query, SSIS, Azure Data Factory)"
+          - "Datenintegration aus verschiedenen Systemen"
+          - "ERP/CRM/DWH Integration (auch Grundverständnis)"
+      
+      - category: "SQL"
+        weight: 0.15  # 15% von Must-Have
+        skills:
+          - "SQL (gute Kenntnisse ODER Grundkenntnisse)"
+          - "SQL Queries (SELECT, JOIN, WHERE, GROUP BY)"
+          - "SQL Datenbanken (auch Erfahrung mit SQL-Datenquellen)"
+      
+      - category: "Zusammenarbeit & Kommunikation"
+        weight: 0.10  # 10% von Must-Have
+        skills:
+          - "Zusammenarbeit mit Fachbereichen"
+          - "Analytisches Denken"
+          - "Lösungsorientierte Arbeitsweise"
+          - "Deutsch (gute Kenntnisse)"
+          - "Englisch (gute Kenntnisse)"
+    
+    # ========================================
+    # SHOULD-HAVE (30% Gewichtung)
+    # Starke Passung
+    # ========================================
+    should_have:
+      - category: "Data Lakehouse & Reporting Umgebung"
+        weight: 0.40  # 40% von Should-Have
+        skills:
+          - "Data Lakehouse Architektur"
+          - "Weiterentwicklung Data Lakehouse"
+          - "Reporting-Architektur"
+          - "Prozessoptimierung"
+      
+      - category: "Qualität & Sicherheit"
+        weight: 0.40  # 40% von Should-Have
+        skills:
+          - "Sicherstellung Datenqualität"
+          - "Performanceoptimierung"
+          - "Datensicherheit in BI-Prozessen"
+      
+      - category: "Qualifikation"
+        weight: 0.20  # 20% von Should-Have
+        skills:
+          - "Studium: Informatik ODER Wirtschaftsinformatik ODER Data Analytics"
+          - "Ausbildung: vergleichbarer Bereich"
+    
+    # ========================================
+    # NICE-TO-HAVE (10% Gewichtung)
+    # Bonuspunkte
+    # ========================================
+    nice_to_have:
+      - category: "Azure Kenntnisse"
+        weight: 0.60  # 60% von Nice-to-Have
+        skills:
+          - "Azure Data Factory"
+          - "Azure Data Lake"
+          - "Azure Synapse Analytics"
+      
+      - category: "Soft Skills"
+        weight: 0.40  # 40% von Nice-to-Have
+        skills:
+          - "Teamfähigkeit"
+          - "Kommunikationsstärke"
+          - "IT-Affinität (FTTx-Umfeld)"
+
+# ========================================
+# SCORING KONFIGURATION
+# ========================================
+scoring:
+  weights:
+    must_have: 0.60     # 60% der Gesamtbewertung
+    should_have: 0.30   # 30% der Gesamtbewertung
+    nice_to_have: 0.10  # 10% der Gesamtbewertung
+  
+  thresholds:
+    excellent_match: 80   # >= 80: Excellent Match
+    good_match: 60        # 60-79: Good Match
+    partial_match: 40     # 40-59: Partial Match
+    poor_match: 0         # < 40: Poor Match
+  
+  recommendations:
+    excellent_match: "EXCELLENT MATCH - Kandidat erfüllt nahezu alle Anforderungen. Sehr starke Empfehlung für Interview."
+    good_match: "GOOD MATCH - Kandidat erfüllt die wichtigsten Anforderungen. Empfehlung für Interview."
+    partial_match: "PARTIAL MATCH - Kandidat erfüllt einige Anforderungen. Kleinere Lücken könnten durch Training geschlossen werden."
+    poor_match: "POOR MATCH - Kandidat erfüllt zu wenige Anforderungen für diese Position."
+
+# ========================================
+# FUTURE POSITIONS (Beispiele)
+# ========================================
+# Weitere Positionen können hier hinzugefügt werden:
+#
+# - position_id: "fullstack-developer"
+#   position_title: "Full-Stack Developer (React + Node.js)"
+#   must_have: [...]
+#   should_have: [...]
+#   nice_to_have: [...]
+

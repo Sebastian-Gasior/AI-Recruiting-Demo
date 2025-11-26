@@ -1,0 +1,55 @@
+# ====================================
+# Phusion Passenger Konfiguration
+# Für Netcup Webhosting 4000 NUE
+# ====================================
+# WICHTIG: Alle Pfade müssen an deine Server-Konfiguration angepasst werden!
+
+# Passenger aktivieren
+PassengerEnabled on
+
+# ANPASSEN: Absoluter Pfad zu deinem Projekt-Verzeichnis
+PassengerAppRoot /home/benutzername/www/ai-recruiting-demo
+
+# ANPASSEN: Pfad zu Python im venv
+PassengerPython /home/benutzername/www/ai-recruiting-demo/venv/bin/python3
+
+# WSGI-Konfiguration
+PassengerAppType wsgi
+PassengerStartupFile passenger_wsgi.py
+
+# ====================================
+# Security Headers
+# ====================================
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "DENY"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# ====================================
+# File Upload Limits (falls nötig)
+# ====================================
+# Für PHP-basierte Uploads (falls verwendet)
+php_value upload_max_filesize 10M
+php_value post_max_size 10M
+
+# ====================================
+# HTTPS Redirect (optional)
+# ====================================
+# Nach SSL-Aktivierung auskommentieren:
+# RewriteEngine On
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ====================================
+# Directory Index
+# ====================================
+DirectoryIndex index.html index.php
+
+# ====================================
+# Error Pages (optional)
+# ====================================
+# ErrorDocument 404 /404.html
+# ErrorDocument 500 /500.html
+

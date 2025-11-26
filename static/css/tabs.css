@@ -1,0 +1,731 @@
+/* AI Recruiting Demo - Tabs Styling */
+/* Story 10.1-10.3: Presentation Mode */
+
+/* ============================================================================
+   TAB NAVIGATION
+   ============================================================================ */
+
+.tabs-navigation {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 30px;
+    border-bottom: 3px solid #e2e8f0;
+    background: white;
+    border-radius: 12px 12px 0 0;
+    padding: 10px 20px 0 20px;
+}
+
+.tab-btn {
+    padding: 15px 30px;
+    background: transparent;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #718096;
+    transition: all 0.3s ease;
+    position: relative;
+    top: 3px;
+}
+
+.tab-btn:hover {
+    color: #667eea;
+    background: #f7fafc;
+}
+
+.tab-btn.active {
+    color: #667eea;
+    border-bottom-color: #667eea;
+    background: white;
+}
+
+/* ============================================================================
+   TAB CONTENT
+   ============================================================================ */
+
+.tab-content {
+    display: none;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ============================================================================
+   JOB DESCRIPTION TAB (Story 10.2)
+   ============================================================================ */
+
+.job-description-tab {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.job-description-tab h2 {
+    color: #2d3748;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #e2e8f0;
+}
+
+.position-header {
+    margin-bottom: 40px;
+    padding: 25px;
+    background: linear-gradient(135deg, #151a64 0%, #a24b9b 100%);
+    color: white;
+    border-radius: 12px;
+}
+
+.position-header h3 {
+    margin: 0 0 10px 0;
+    font-size: 1.8rem;
+}
+
+.position-subtitle {
+    margin: 0;
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.requirements-block {
+    margin-bottom: 40px;
+    padding: 30px;
+    border-radius: 12px;
+    border-left: 5px solid;
+}
+
+.requirements-block:last-child {
+    margin-bottom: 0;
+}
+
+.must-have-block {
+    background: #fff5f5;
+    border-color: #fc8181;
+}
+
+.should-have-block {
+    background: #fef5e7;
+    border-color: #ed8936;
+}
+
+.nice-to-have-block {
+    background: #ebf8ff;
+    border-color: #4299e1;
+}
+
+.requirements-block-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+}
+
+.requirements-block-header h4 {
+    margin: 0;
+    font-size: 1.4rem;
+    color: #2d3748;
+}
+
+.weight-badge {
+    padding: 6px 15px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.requirement-group {
+    margin-bottom: 25px;
+}
+
+.requirement-group:last-child {
+    margin-bottom: 0;
+}
+
+.requirement-group h5 {
+    color: #2d3748;
+    font-size: 1.15rem;
+    margin: 0 0 12px 0;
+    font-weight: 600;
+}
+
+.skills-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skills-list li {
+    padding: 8px 0 8px 25px;
+    position: relative;
+    color: #4a5568;
+    line-height: 1.6;
+}
+
+.skills-list li:before {
+    content: "•";
+    position: absolute;
+    left: 8px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #667eea;
+}
+
+/* ============================================================================
+   INFO TAB (Story 10.3)
+   ============================================================================ */
+
+.info-tab {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.info-tab h2 {
+    color: #2d3748;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #e2e8f0;
+}
+
+.info-section {
+    margin-bottom: 35px;
+    padding: 25px;
+    background: #f7fafc;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+}
+
+.info-section:last-child {
+    margin-bottom: 0;
+}
+
+.info-section h3 {
+    color: #2d3748;
+    font-size: 1.4rem;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.info-section p {
+    color: #4a5568;
+    line-height: 1.8;
+    margin: 0 0 15px 0;
+}
+
+.info-section p:last-child {
+    margin-bottom: 0;
+}
+
+.info-list {
+    padding-left: 20px;
+    margin: 15px 0;
+}
+
+.info-list li {
+    color: #4a5568;
+    line-height: 1.8;
+    margin-bottom: 10px;
+}
+
+.scoring-info {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.scoring-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.scoring-item:last-child {
+    border-bottom: none;
+}
+
+.scoring-label {
+    font-weight: 600;
+    color: #2d3748;
+}
+
+.scoring-value {
+    color: #667eea;
+    font-weight: 600;
+}
+
+.info-note {
+    background: #ebf8ff;
+    padding: 15px;
+    border-radius: 6px;
+    border-left: 3px solid #4299e1;
+    color: #2c5282;
+}
+
+.tech-info {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.tech-item {
+    padding: 10px 0;
+    border-bottom: 1px solid #e2e8f0;
+    color: #4a5568;
+}
+
+.tech-item:last-child {
+    border-bottom: none;
+}
+
+.tech-item strong {
+    color: #2d3748;
+    min-width: 150px;
+    display: inline-block;
+}
+
+/* ============================================================================
+   RESPONSIVE
+   ============================================================================ */
+
+@media (max-width: 768px) {
+    .tabs-navigation {
+        padding: 10px 10px 0 10px;
+    }
+    
+    .tab-btn {
+        padding: 12px 15px;
+        font-size: 0.95rem;
+    }
+    
+    .job-description-tab,
+    .info-tab {
+        padding: 20px;
+    }
+    
+    .position-header h3 {
+        font-size: 1.4rem;
+    }
+    
+    .requirements-block {
+        padding: 20px;
+    }
+    
+    .requirements-block-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .info-section {
+        padding: 15px;
+    }
+    
+    .scoring-item {
+        flex-direction: column;
+        gap: 5px;
+    }
+}
+
+/* ============================================================================
+   PERSONALITY TEST TAB (Story 11.3)
+   ============================================================================ */
+
+.personality-tab {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Intro Screen */
+.personality-intro {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.personality-intro h2 {
+    color: #2d3748;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.intro-text {
+    color: #4a5568;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+.intro-features {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 40px;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.intro-feature {
+    flex: 1;
+    min-width: 150px;
+    padding: 20px;
+    background: #f7fafc;
+    border-radius: 8px;
+}
+
+.intro-feature strong {
+    display: block;
+    color: #667eea;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.intro-feature p {
+    margin: 0;
+    color: #718096;
+    font-size: 0.9rem;
+}
+
+.start-test-btn {
+    padding: 15px 40px;
+    background: linear-gradient(135deg, #151a64 0%, #a24b9b 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.start-test-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(234, 102, 102, 0.4);
+}
+
+.start-test-btn:active {
+    transform: translateY(0);
+}
+
+/* Question Screen */
+.personality-question-container {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.question-progress {
+    margin-bottom: 30px;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 8px;
+    background: #e2e8f0;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(135deg, #151a64 0%, #a24b9b 100%);
+    transition: width 0.3s ease;
+    width: 0%;
+}
+
+.progress-text {
+    display: block;
+    text-align: center;
+    color: #718096;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.question-wrapper {
+    background: #f7fafc;
+    padding: 40px;
+    border-radius: 12px;
+    border: 2px solid #e2e8f0;
+}
+
+.question-wrapper h3 {
+    color: #2d3748;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.question-text {
+    font-size: 1.3rem;
+    color: #4a5568;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    font-style: italic;
+}
+
+/* Likert Scale */
+.likert-scale {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.likert-option {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.likert-option:hover {
+    border-color: #667eea;
+    background: #f7fafc;
+}
+
+.likert-option input[type="radio"] {
+    margin-right: 15px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.likert-option input[type="radio"]:checked + span {
+    color: #667eea;
+    font-weight: 600;
+}
+
+.likert-option:has(input[type="radio"]:checked) {
+    border-color: #667eea;
+    background: #ebf4ff;
+}
+
+.question-nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.btn-back,
+.btn-next {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-back {
+    background: #e2e8f0;
+    color: #4a5568;
+}
+
+.btn-back:hover:not(:disabled) {
+    background: #cbd5e0;
+}
+
+.btn-next {
+    background: linear-gradient(135deg, #151a64 0%, #a24b9b 100%);
+    color: white;
+}
+
+.btn-next:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-back:disabled,
+.btn-next:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Results Screen */
+.personality-results-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.personality-results-container h2 {
+    color: #2d3748;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.ocean-score-card {
+    background: #f7fafc;
+    padding: 30px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+    border-left: 5px solid #667eea;
+}
+
+.score-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.score-header h3 {
+    margin: 0;
+    color: #2d3748;
+    font-size: 1.3rem;
+}
+
+.score-value {
+    background: linear-gradient(135deg, #151a64 0%, #a24b9b 100%);
+    color: white;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.progress-bar-large {
+    width: 100%;
+    height: 20px;
+    background: #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.progress-bar-large .progress-fill {
+    height: 100%;
+    background: linear-gradient(135deg, #151a64 0%, #a24b9b 100%);
+    transition: width 0.5s ease;
+}
+
+.score-interpretation {
+    margin: 0;
+    color: #4a5568;
+    line-height: 1.6;
+}
+
+.score-interpretation strong {
+    color: #2d3748;
+}
+
+/* Personality Fit Score Card */
+.personality-fit-card {
+    background: linear-gradient(135deg, #151a64 0%, #a24b9b 100%);
+    padding: 40px;
+    border-radius: 12px;
+    margin-top: 30px;
+    text-align: center;
+    color: white;
+}
+
+.personality-fit-card h3 {
+    margin: 0 0 25px 0;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.fit-score-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 6px solid white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.fit-score-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 5px;
+}
+
+.fit-score-level {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    font-weight: 600;
+}
+
+.fit-description {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    opacity: 0.95;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .personality-tab {
+        padding: 20px;
+    }
+    
+    .intro-features {
+        flex-direction: column;
+    }
+    
+    .question-wrapper {
+        padding: 25px;
+    }
+    
+    .question-text {
+        font-size: 1.1rem;
+    }
+    
+    .likert-option {
+        padding: 12px 15px;
+    }
+    
+    .question-nav {
+        flex-direction: column;
+    }
+    
+    .btn-back,
+    .btn-next {
+        width: 100%;
+    }
+    
+    .personality-fit-card {
+        padding: 25px;
+    }
+    
+    .fit-score-circle {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .fit-score-value {
+        font-size: 1.5rem;
+    }
+}
+

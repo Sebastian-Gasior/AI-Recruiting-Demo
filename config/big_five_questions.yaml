@@ -1,0 +1,363 @@
+# Big Five Personality Assessment - IPIP-30 Fragen Pool
+# International Personality Item Pool - Extended Question Pool
+# Wissenschaftlich validierter Fragebogen für Big Five Persönlichkeitsdimensionen
+#
+# Struktur:
+# - Mindestens 12 Fragen pro Dimension (O, C, E, A, N) - insgesamt 60+ Fragen
+# - Beim Test werden zufällig 30 Fragen ausgewählt (6 pro Dimension)
+# - Fragen werden zufällig durchgemischt angezeigt
+# - Normal Keying (+) oder Reversed Keying (-)
+# - 5-Punkt Likert-Skala: 1=Trifft überhaupt nicht zu, 5=Trifft völlig zu
+#
+# Scoring:
+# - Normal (+) items: 1=1, 2=2, 3=3, 4=4, 5=5
+# - Reversed (-) items: 1=5, 2=4, 3=3, 4=2, 5=1
+# - Range pro Dimension: 6-30 (6 Fragen × 1-5 Punkte)
+
+dimensions:
+  O:
+    code: "O"
+    name_de: "Openness (Offenheit für Erfahrungen)"
+    name_en: "Openness to Experience"
+    description: "Kreativität, Neugier, Vorstellungskraft, Lernbereitschaft"
+  
+  C:
+    code: "C"
+    name_de: "Conscientiousness (Gewissenhaftigkeit)"
+    name_en: "Conscientiousness"
+    description: "Organisation, Zuverlässigkeit, Selbstdisziplin, Pflichtbewusstsein"
+  
+  E:
+    code: "E"
+    name_de: "Extraversion"
+    name_en: "Extraversion"
+    description: "Geselligkeit, Gesprächigkeit, Energie, Optimismus"
+  
+  A:
+    code: "A"
+    name_de: "Agreeableness (Verträglichkeit)"
+    name_en: "Agreeableness"
+    description: "Kooperationsfähigkeit, Mitgefühl, Vertrauen, Freundlichkeit"
+  
+  N:
+    code: "N"
+    name_de: "Neuroticism (Neurotizismus)"
+    name_en: "Neuroticism"
+    description: "Emotionale Stabilität, Stressresistenz, Selbstvertrauen (niedrig = stabil)"
+
+questions:
+  # ========================================
+  # OPENNESS (O) - 12+ Fragen (6 werden zufällig ausgewählt)
+  # ========================================
+  - id: 1
+    dimension: "O"
+    keying: "+"
+    text: "Ich habe eine lebhafte Vorstellungskraft"
+
+  - id: 2
+    dimension: "O"
+    keying: "+"
+    text: "Ich interessiere mich für verschiedene Themen und Ideen"
+
+  - id: 3
+    dimension: "O"
+    keying: "-"
+    text: "Ich habe wenig Interesse an kreativen oder künstlerischen Dingen"
+
+  - id: 4
+    dimension: "O"
+    keying: "+"
+    text: "Ich denke gerne über neue Konzepte nach"
+
+  - id: 5
+    dimension: "O"
+    keying: "-"
+    text: "Ich vermeide abstrakte oder philosophische Fragen"
+
+  - id: 6
+    dimension: "O"
+    keying: "-"
+    text: "Ich habe wenig Freude daran, neue Ideen zu erkunden"
+
+  - id: 31
+    dimension: "O"
+    keying: "+"
+    text: "Ich probiere gerne neue Methoden oder Wege aus"
+
+  - id: 32
+    dimension: "O"
+    keying: "+"
+    text: "Ich habe viele kreative Ideen"
+
+  - id: 33
+    dimension: "O"
+    keying: "-"
+    text: "Ich bevorzuge Routine statt Veränderung"
+
+  - id: 34
+    dimension: "O"
+    keying: "+"
+    text: "Ich lerne gerne neue Konzepte und Denkweisen"
+
+  - id: 35
+    dimension: "O"
+    keying: "-"
+    text: "Ich denke nicht gerne über komplexe Probleme nach"
+
+  - id: 36
+    dimension: "O"
+    keying: "+"
+    text: "Ich bin erfinderisch und einfallsreich"
+
+  # ========================================
+  # CONSCIENTIOUSNESS (C) - 12+ Fragen (6 werden zufällig ausgewählt)
+  # ========================================
+  - id: 7
+    dimension: "C"
+    keying: "+"
+    text: "Ich bin gut vorbereitet"
+
+  - id: 8
+    dimension: "C"
+    keying: "-"
+    text: "Ich lasse Aufgaben oder Dinge oft liegen"
+
+  - id: 9
+    dimension: "C"
+    keying: "-"
+    text: "Ich vergesse häufig wichtige Dinge"
+
+  - id: 10
+    dimension: "C"
+    keying: "+"
+    text: "Ich achte auf Details und Genauigkeit"
+
+  - id: 11
+    dimension: "C"
+    keying: "-"
+    text: "Ich arbeite eher schlampig als sorgfältig"
+
+  - id: 12
+    dimension: "C"
+    keying: "+"
+    text: "Ich erledige Aufgaben zügig und zuverlässig"
+
+  - id: 37
+    dimension: "C"
+    keying: "+"
+    text: "Ich bin pünktlich und halte Absprachen ein"
+
+  - id: 38
+    dimension: "C"
+    keying: "-"
+    text: "Ich schiebe wichtige Aufgaben auf"
+
+  - id: 39
+    dimension: "C"
+    keying: "+"
+    text: "Ich plane meine Arbeit im Voraus"
+
+  - id: 40
+    dimension: "C"
+    keying: "-"
+    text: "Ich verliere häufig den Überblick"
+
+  - id: 41
+    dimension: "C"
+    keying: "+"
+    text: "Ich halte Ordnung und Struktur"
+
+  - id: 42
+    dimension: "C"
+    keying: "+"
+    text: "Ich bin eine zuverlässige Person"
+
+  # ========================================
+  # EXTRAVERSION (E) - 12+ Fragen (6 werden zufällig ausgewählt)
+  # ========================================
+  - id: 13
+    dimension: "E"
+    keying: "+"
+    text: "Ich fühle mich wohl, wenn ich im Mittelpunkt stehe"
+
+  - id: 14
+    dimension: "E"
+    keying: "-"
+    text: "Ich fühle mich in Gesprächen oft unwohl"
+
+  - id: 15
+    dimension: "E"
+    keying: "-"
+    text: "Ich halte mich in Gruppen eher zurück"
+
+  - id: 16
+    dimension: "E"
+    keying: "-"
+    text: "Ich beginne selten Gespräche"
+
+  - id: 17
+    dimension: "E"
+    keying: "+"
+    text: "Ich spreche viel und gerne"
+
+  - id: 18
+    dimension: "E"
+    keying: "-"
+    text: "Ich habe selten etwas zu sagen"
+
+  - id: 43
+    dimension: "E"
+    keying: "+"
+    text: "Ich genieße soziale Kontakte"
+
+  - id: 44
+    dimension: "E"
+    keying: "+"
+    text: "Ich wirke auf andere energiegeladen"
+
+  - id: 45
+    dimension: "E"
+    keying: "-"
+    text: "Ich bleibe in größeren Gruppen eher still"
+
+  - id: 46
+    dimension: "E"
+    keying: "+"
+    text: "Ich bin spontan und lebhaft"
+
+  - id: 47
+    dimension: "E"
+    keying: "-"
+    text: "Ich fühle mich in großen Gruppen oft unwohl"
+
+  - id: 48
+    dimension: "E"
+    keying: "+"
+    text: "Ich gehe offen auf Menschen zu"
+
+  # ========================================
+  # AGREEABLENESS (A) - 12+ Fragen (6 werden zufällig ausgewählt)
+  # ========================================
+  - id: 19
+    dimension: "A"
+    keying: "-"
+    text: "Ich interessiere mich selten für die Gefühle anderer"
+
+  - id: 20
+    dimension: "A"
+    keying: "+"
+    text: "Ich zeige Interesse und Anteilnahme an anderen Menschen"
+
+  - id: 21
+    dimension: "A"
+    keying: "-"
+    text: "Ich habe wenig Interesse an den Problemen anderer"
+
+  - id: 22
+    dimension: "A"
+    keying: "+"
+    text: "Ich zeige Mitgefühl, wenn jemand Hilfe braucht"
+
+  - id: 23
+    dimension: "A"
+    keying: "-"
+    text: "Ich bin selten einfühlsam"
+
+  - id: 24
+    dimension: "A"
+    keying: "+"
+    text: "Ich kümmere mich um das Wohlergehen anderer"
+
+  - id: 49
+    dimension: "A"
+    keying: "+"
+    text: "Ich vertraue anderen schnell"
+
+  - id: 50
+    dimension: "A"
+    keying: "-"
+    text: "Ich bin eher misstrauisch gegenüber Menschen"
+
+  - id: 51
+    dimension: "A"
+    keying: "+"
+    text: "Ich bin hilfsbereit und unterstützend"
+
+  - id: 52
+    dimension: "A"
+    keying: "-"
+    text: "Ich bin in Teams eher unkooperativ"
+
+  - id: 53
+    dimension: "A"
+    keying: "+"
+    text: "Ich bin verständnisvoll gegenüber anderen"
+
+  - id: 54
+    dimension: "A"
+    keying: "-"
+    text: "Ich bewerte andere häufig kritisch"
+
+  # ========================================
+  # NEUROTICISM (N) - 12+ Fragen (6 werden zufällig ausgewählt)
+  # ========================================
+  - id: 25
+    dimension: "N"
+    keying: "+"
+    text: "Ich werde schnell nervös oder angespannt"
+
+  - id: 26
+    dimension: "N"
+    keying: "-"
+    text: "Ich kann mich leicht entspannen"
+
+  - id: 27
+    dimension: "N"
+    keying: "-"
+    text: "Ich bleibe auch unter Druck ruhig"
+
+  - id: 28
+    dimension: "N"
+    keying: "+"
+    text: "Ich reagiere leicht verärgert oder gereizt"
+
+  - id: 29
+    dimension: "N"
+    keying: "-"
+    text: "Ich habe selten Stimmungsschwankungen"
+
+  - id: 30
+    dimension: "N"
+    keying: "+"
+    text: "Ich habe häufig wechselnde Gefühle"
+
+  - id: 55
+    dimension: "N"
+    keying: "+"
+    text: "Ich mache mir oft Sorgen"
+
+  - id: 56
+    dimension: "N"
+    keying: "-"
+    text: "Ich bin emotional stabil"
+
+  - id: 57
+    dimension: "N"
+    keying: "+"
+    text: "Ich werde leicht angespannt"
+
+  - id: 58
+    dimension: "N"
+    keying: "-"
+    text: "Ich bin gelassen in schwierigen Situationen"
+
+  - id: 59
+    dimension: "N"
+    keying: "+"
+    text: "Ich bin empfindlich gegenüber Kritik"
+
+  - id: 60
+    dimension: "N"
+    keying: "-"
+    text: "Ich behalte auch in Stresssituationen die Kontrolle"
+

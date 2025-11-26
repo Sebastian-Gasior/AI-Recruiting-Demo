@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Recruiting Demo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/results.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/requirements-matching.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tabs.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🤖 AI-Recruiting-Demo</h1>
+            <p class="subtitle">Laden Sie einen Lebenslauf zur automatischen Analyse hoch</p>
+        </header>
+
+        <!-- Story 10: Tab Navigation (always visible) -->
+        <div class="tabs-navigation">
+            <button class="tab-btn active" data-tab="upload">
+                📤 Upload & Auswertung
+            </button>
+            <button class="tab-btn" data-tab="stellenausschreibung">
+                📄 Stellenausschreibung
+            </button>
+            <button class="tab-btn" data-tab="info">
+                ℹ️ Info
+            </button>
+            <button class="tab-btn" data-tab="personality">
+                🧠 Persönlichkeitstest
+            </button>
+        </div>
+
+        <main>
+            <!-- Tab Content: Upload & Auswertung -->
+            <div class="tab-content active" id="tab-upload">
+                <!-- Story 2.1: Upload Form -->
+                <form id="uploadForm" action="/upload" method="POST" enctype="multipart/form-data">
+                    
+                    <!-- File Upload Area -->
+                    <div class="upload-area" id="uploadArea">
+                        <div class="upload-icon">📄</div>
+                        <label for="cvFile" class="upload-label">
+                            <span class="upload-text">CV hochladen (PDF, max 10MB)</span>
+                            <input 
+                                type="file" 
+                                id="cvFile" 
+                                name="cv_file" 
+                                accept="application/pdf,.pdf"
+                                required
+                            >
+                        </label>
+                        <p class="file-name" id="fileName">Keine Datei ausgewählt</p>
+                    </div>
+
+                    <!-- Error Message Area -->
+                    <div class="error-message" id="errorMessage" style="display: none;">
+                        <span class="error-icon">⚠️</span>
+                        <span class="error-text" id="errorText"></span>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button 
+                        type="submit" 
+                        id="submitBtn" 
+                        class="submit-btn" 
+                        disabled
+                    >
+                        <span class="btn-text">Analysieren</span>
+                        <span class="btn-icon">→</span>
+                    </button>
+
+                    <!-- Loading Spinner -->
+                    <div class="loading-spinner" id="loadingSpinner" style="display: none;">
+                        <div class="spinner"></div>
+                        <p>CV wird analysiert...</p>
+                    </div>
+                </form>
+
+                <!-- Results will be displayed here after upload -->
+                {% if has_results %}
+                <hr style="margin: 40px 0; border: none; border-top: 2px solid #e2e8f0;">
+                <div id="resultsContainer">
+                    <h2 style="color: #2d3748; margin-bottom: 30px;">📊 Analyse-Ergebnisse: {{ filename }}</h2>
+                    {% include '_results_content.html' %}
+                </div>
+                {% endif %}
+            </div>
+
+            <!-- Tab Content: Stellenausschreibung -->
+            <div class="tab-content" id="tab-stellenausschreibung">
+                <div class="job-description-tab">
+                    <h2>📄 Stellenausschreibung</h2>
+                    
+                    <div class="position-header">
+                        <h3>Power BI Entwickler / Data Warehouse (FTTx)</h3>
+                        <p class="position-subtitle">Automatischer CV-Abgleich gegen diese Position</p>
+                    </div>
+                    
+                    <!-- Must-Have Requirements -->
+                    <div class="requirements-block must-have-block">
+                        <div class="requirements-block-header">
+                            <h4>MUST-HAVE ANFORDERUNGEN</h4>
+                            <span class="weight-badge">60% Gewichtung</span>
+                        </div>
+                        
+                        <div class="requirement-group">
+                            <h5>Power BI & Datenvisualisierung</h5>
+                            <ul class="skills-list">
+                                <li>Power BI Reports</li>
+                                <li>Power BI Dashboards</li>
+                                <li>Power BI Datenmodelle</li>
+                                <li>DAX (sehr gute Kenntnisse)</li>
+                                <li>Power Query (M)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="requirement-group">
+                            <h5>Datenmodellierung & Datenarchitektur</h5>
+                            <ul class="skills-list">
+                                <li>Datenmodellierung (auch Grundkenntnisse)</li>
+                                <li>Datentransformation (z.B. Power Query, ETL)</li>
+                                <li>Datenoptimierung (z.B. Datenbereinigung, Performance)</li>
+                                <li>Star-Schema (auch Grundkenntnisse)</li>
+                                <li>Snowflake-Schema (auch Grundkenntnisse)</li>
+                                <li>Data Warehouse Strukturen (auch Grundverständnis)</li>
+                                <li>SQL-Datenbanken (SQL Server, Azure Synapse, Snowflake, MySQL, PostgreSQL, etc.)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="requirement-group">
+                            <h5>ETL & Datenintegration</h5>
+                            <ul class="skills-list">
+                                <li>ETL-Prozesse (Konzeption, Entwicklung ODER Mitwirkung)</li>
+                                <li>ETL-Verständnis (auch durch Power Query, Data Flows)</li>
+                                <li>Datentransformation (z.B. Power Query, SSIS, Azure Data Factory)</li>
+                                <li>ERP/CRM/DWH Integration (auch Grundverständnis)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="requirement-group">
+                            <h5>SQL</h5>
+                            <ul class="skills-list">
+                                <li>SQL (gute Kenntnisse ODER Grundkenntnisse)</li>
+                                <li>SQL Queries (SELECT, JOIN, WHERE, GROUP BY)</li>
+                                <li>SQL Datenbanken (auch Erfahrung mit SQL-Datenquellen)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="requirement-group">
+                            <h5>Zusammenarbeit & Kommunikation</h5>
+                            <ul class="skills-list">
+                                <li>Enge Zusammenarbeit mit Fachbereichen</li>
+                                <li>Analytisches Denken</li>
+                                <li>Lösungsorientierte Arbeitsweise</li>
+                                <li>Gute Deutsch- und Englischkenntnisse</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Should-Have Requirements -->
+                    <div class="requirements-block should-have-block">
+                        <div class="requirements-block-header">
+                            <h4>SHOULD-HAVE ANFORDERUNGEN</h4>
+                            <span class="weight-badge">30% Gewichtung</span>
+                        </div>
+                        
+                        <div class="requirement-group">
+                            <h5>Data Lakehouse & Reporting</h5>
+                            <ul class="skills-list">
+                                <li>Data Lakehouse Architektur (Weiterentwicklung)</li>
+                                <li>Reporting-Architektur & Prozessoptimierung</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="requirement-group">
+                            <h5>Qualität & Sicherheit</h5>
+                            <ul class="skills-list">
+                                <li>Sicherstellung der Datenqualität</li>
+                                <li>Performanceoptimierung</li>
+                                <li>Datensicherheit in BI-Prozessen</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="requirement-group">
+                            <h5>Qualifikation</h5>
+                            <ul class="skills-list">
+                                <li>Studium oder Ausbildung: (Wirtschafts-)Informatik, Data Analytics oder vergleichbar</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Nice-to-Have Requirements -->
+                    <div class="requirements-block nice-to-have-block">
+                        <div class="requirements-block-header">
+                            <h4>NICE-TO-HAVE ANFORDERUNGEN</h4>
+                            <span class="weight-badge">10% Gewichtung</span>
+                        </div>
+                        
+                        <div class="requirement-group">
+                            <h5>Azure Kenntnisse</h5>
+                            <ul class="skills-list">
+                                <li>Azure Data Factory</li>
+                                <li>Azure Data Lake</li>
+                                <li>Azure Synapse Analytics</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="requirement-group">
+                            <h5>Soft Skills</h5>
+                            <ul class="skills-list">
+                                <li>Teamfähigkeit</li>
+                                <li>Kommunikationsstärke</li>
+                                <li>IT-Affinität fürs FTTx-Umfeld</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: Info -->
+            <div class="tab-content" id="tab-info">
+                <div class="info-tab">
+                    <h2>ℹ️ Über dieses System</h2>
+                    
+                    <div class="info-section">
+                        <h3>🤖 Was macht das System?</h3>
+                        <p>
+                            Dieses AI-Recruiting-System analysiert Lebensläufe automatisch und gleicht sie gegen
+                            strukturierte Stellenanforderungen ab. Jeder Skill wird einzeln geprüft und mit 
+                            konkreten Nachweisen aus dem CV belegt.
+                        </p>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3>⚙️ Wie funktioniert es?</h3>
+                        <ol class="info-list">
+                            <li><strong>PDF Upload:</strong> CV wird hochgeladen (max 10MB)</li>
+                            <li><strong>Text-Extraktion:</strong> Text wird aus PDF extrahiert (inkl. Tabellen)</li>
+                            <li><strong>AI-Analyse:</strong> OpenAI GPT-4o-mini analysiert den CV</li>
+                            <li><strong>Requirements-Matching:</strong> Jeder der 40 Skills wird einzeln geprüft</li>
+                            <li><strong>Scoring:</strong> Gewichteter Score (Must-Have 60%, Should-Have 30%, Nice-to-Have 10%)</li>
+                            <li><strong>Gap-Analyse:</strong> Was fehlt? Was passt perfekt?</li>
+                        </ol>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3>📊 Scoring-Methode</h3>
+                        <div class="scoring-info">
+                            <div class="scoring-item">
+                                <span class="scoring-label">Must-Have Skills:</span>
+                                <span class="scoring-value">60% Gewichtung</span>
+                            </div>
+                            <div class="scoring-item">
+                                <span class="scoring-label">Should-Have Skills:</span>
+                                <span class="scoring-value">30% Gewichtung</span>
+                            </div>
+                            <div class="scoring-item">
+                                <span class="scoring-label">Nice-to-Have Skills:</span>
+                                <span class="scoring-value">10% Gewichtung</span>
+                            </div>
+                        </div>
+                        <p class="info-note">
+                            <strong>Beispiel:</strong> Wenn ein Kandidat 80% der Must-Haves, 60% der Should-Haves und 40% der Nice-to-Haves erfüllt,
+                            ergibt sich: (80 × 0.6) + (60 × 0.3) + (40 × 0.1) = 48 + 18 + 4 = <strong>70 Punkte (Good Match)</strong>
+                        </p>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3>💡 Semantisches Matching</h3>
+                        <p>
+                            Das System erkennt auch <strong>verwandte Skills</strong>:
+                        </p>
+                        <ul class="info-list">
+                            <li>"SQL-Datenquellen" wird als SQL-Kenntnisse gewertet</li>
+                            <li>"Power Query Transformation" wird als ETL-Erfahrung gewertet</li>
+                            <li>"Mitwirkung bei ETL" zählt als ETL-Verständnis</li>
+                            <li>"Grundkenntnisse" werden positiv bewertet</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3>💻 Technologie</h3>
+                        <div class="tech-info">
+                            <div class="tech-item">
+                                <strong>AI-Modell:</strong> OpenAI GPT-4o-mini
+                            </div>
+                            <div class="tech-item">
+                                <strong>Kosten:</strong> ~$0.0008 pro Analyse
+                            </div>
+                            <div class="tech-item">
+                                <strong>Dauer:</strong> 30-60 Sekunden
+                            </div>
+                            <div class="tech-item">
+                                <strong>Skills geprüft:</strong> 40 Einzelskills
+                            </div>
+                            <div class="tech-item">
+                                <strong>Framework:</strong> Python Flask
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3>🔒 Datenschutz</h3>
+                        <p>
+                            <strong>Keine persistente Speicherung:</strong> Der CV wird nach der Analyse sofort gelöscht.
+                            Die Ergebnisse werden nur für die aktuelle Session im Browser gespeichert.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab Content: Personality Test -->
+            <div class="tab-content" id="tab-personality">
+                <div class="personality-tab">
+                    <!-- Intro Screen (when test not started) -->
+                    <div class="personality-intro" id="personalityIntro">
+                        <h2>🧠 Big Five Persönlichkeitstest</h2>
+                        <p class="intro-text">
+                            Ergänzen Sie die CV-Analyse mit einem wissenschaftlich validierten 
+                            Persönlichkeitstest (IPIP-30). Der Test dauert ca. 5-10 Minuten 
+                            und hilft, Ihr Profil ganzheitlich zu bewerten.
+                        </p>
+                        <div class="intro-features">
+                            <div class="intro-feature">
+                                <strong>30 Fragen</strong>
+                                <p>Wissenschaftlich validiert (IPIP-30)</p>
+                            </div>
+                            <div class="intro-feature">
+                                <strong>5-10 Minuten</strong>
+                                <p>Schnell und unkompliziert</p>
+                            </div>
+                            <div class="intro-feature">
+                                <strong>Optional</strong>
+                                <p>Ergänzt die CV-Analyse</p>
+                            </div>
+                        </div>
+                        <button id="startPersonalityTest" class="start-test-btn">
+                            Test starten
+                        </button>
+                    </div>
+
+                    <!-- Question Screen (during test) -->
+                    <div class="personality-question-container" id="personalityQuestionContainer" style="display: none;">
+                        <div class="question-progress">
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-fill" id="questionProgressBar"></div>
+                            </div>
+                            <span class="progress-text" id="questionProgressText">Frage 1/30</span>
+                        </div>
+
+                        <div class="question-wrapper">
+                            <h3 id="questionNumber">Frage 1</h3>
+                            <p class="question-text" id="questionText">Loading...</p>
+                            
+                            <div class="likert-scale" id="likertScale">
+                                <!-- Radio buttons will be generated by JavaScript -->
+                            </div>
+                            
+                            <div class="question-nav">
+                                <button class="btn-back" id="btnBack" disabled>← Zurück</button>
+                                <button class="btn-next" id="btnNext">Weiter →</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Results Screen (after test) -->
+                    <div class="personality-results-container" id="personalityResultsContainer" style="display: none;">
+                        <h2>🧠 Ihr Big Five Profil</h2>
+                        <div id="oceanScoresDisplay">
+                            <!-- Results will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>Powered by OpenAI GPT-4o-mini</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/tabs.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/upload.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/personality-test.js') }}"></script>
+</body>
+</html>
+

@@ -1,0 +1,419 @@
+<!-- Story 10: Results Content Template (shared between index and results) -->
+
+{% if overall_scores %}
+<!-- Job Matching Score -->
+<div class="job-matching-section">
+    <h2>📊 Job Matching Score</h2>
+    <p class="position-title">Position: {{ _metadata.position_title if _metadata else 'Power BI Entwickler' }}</p>
+    
+    <!-- DEBUG: Show raw values -->
+    <!-- Must: {{ overall_scores.must_have }}, Should: {{ overall_scores.should_have }}, Nice: {{ overall_scores.nice_to_have }} -->
+    
+    <div class="overall-score-box">
+        <div class="score-circle {% if overall_scores.weighted_total >= 80 %}excellent{% elif overall_scores.weighted_total >= 60 %}good{% elif overall_scores.weighted_total >= 40 %}partial{% else %}poor{% endif %}">
+            <span class="score-number">{{ overall_scores.weighted_total|round|int }}</span>
+            <span class="score-label">/100</span>
+        </div>
+        <div class="score-details">
+            <h3>{{ recommendation.recommendation }}</h3>
+            <div class="score-breakdown">
+                <div class="score-item-vertical">
+                    <div class="score-header">
+                        <span class="label">Must-Have (60%):</span>
+                        <span class="value">{{ (overall_scores.must_have or 0)|round|int }}%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill must-have" style="width: {{ (overall_scores.must_have or 0)|round|int }}%"></div>
+                    </div>
+                </div>
+                <div class="score-item-vertical">
+                    <div class="score-header">
+                        <span class="label">Should-Have (30%):</span>
+                        <span class="value">{{ (overall_scores.should_have or 0)|round|int }}%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill should-have" style="width: {{ (overall_scores.should_have or 0)|round|int }}%"></div>
+                    </div>
+                </div>
+                <div class="score-item-vertical">
+                    <div class="score-header">
+                        <span class="label">Nice-to-Have (10%):</span>
+                        <span class="value">{{ (overall_scores.nice_to_have or 0)|round|int }}%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill nice-to-have" style="width: {{ (overall_scores.nice_to_have or 0)|round|int }}%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Story 11.5: Combined Score (CV + Personality) -->
+{% if combined_score %}
+<div class="combined-score-section">
+    <h2>🎯 Gesamtbewertung (CV + Persönlichkeit)</h2>
+    <p class="combined-subtitle">Kombinierte Auswertung aus CV-Match und Persönlichkeitstest</p>
+    
+    <div class="combined-score-box">
+        <div class="combined-score-circle {% if combined_score.combined_score >= 80 %}excellent{% elif combined_score.combined_score >= 60 %}good{% elif combined_score.combined_score >= 40 %}partial{% else %}poor{% endif %}">
+            <span class="combined-score-number">{{ combined_score.combined_score|round|int }}</span>
+            <span class="combined-score-label">/100</span>
+        </div>
+        
+        <div class="combined-score-breakdown">
+            <div class="combined-score-item">
+                <div class="combined-score-header">
+                    <span class="combined-label">📄 CV Match Score:</span>
+                    <span class="combined-value">{{ combined_score.cv_match_score|round|int }}/100</span>
+                    <span class="combined-weight">({{ (combined_score.weights.cv * 100)|round|int }}% Gewichtung)</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill must-have" style="width: {{ combined_score.cv_match_score|round|int }}%"></div>
+                </div>
+            </div>
+            
+            <div class="combined-score-item">
+                <div class="combined-score-header">
+                    <span class="combined-label">🧠 Personality Fit Score:</span>
+                    <span class="combined-value">{{ combined_score.personality_fit_score }}/100</span>
+                    <span class="combined-weight">({{ (combined_score.weights.personality * 100)|round|int }}% Gewichtung)</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill should-have" style="width: {{ combined_score.personality_fit_score }}%"></div>
+                </div>
+            </div>
+            
+            <div class="combined-score-divider"></div>
+            
+            <div class="combined-score-item final">
+                <div class="combined-score-header">
+                    <span class="combined-label">🏆 Overall Score:</span>
+                    <span class="combined-value-final">{{ combined_score.combined_score|round|int }}/100</span>
+                </div>
+                <div class="combined-recommendation">
+                    {% if combined_score.combined_score >= 80 %}
+                        <strong>Excellent Match</strong> - Sehr gute Gesamtbewertung
+                    {% elif combined_score.combined_score >= 60 %}
+                        <strong>Good Match</strong> - Gute Gesamtbewertung
+                    {% elif combined_score.combined_score >= 40 %}
+                        <strong>Partial Match</strong> - Mittelmäßige Gesamtbewertung
+                    {% else %}
+                        <strong>Poor Match</strong> - Geringe Gesamtbewertung
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- Requirements Matching Tables -->
+{% if requirements_matching %}
+<div class="requirements-matching-section">
+    <h2>📋 Anforderungen-Abgleich</h2>
+    
+    <!-- Must-Have Requirements -->
+    {% if requirements_matching.must_have %}
+    <div class="requirements-category must-have-category">
+        <h3>MUST-HAVE (60% Gewichtung)</h3>
+        {% for category in requirements_matching.must_have %}
+        <div class="requirement-category">
+            <h4>{{ category.category }} <span class="match-percentage">({{ category.category_match_percentage }}% Match)</span></h4>
+            <table class="requirements-table">
+                <thead>
+                    <tr>
+                        <th>Anforderung</th>
+                        <th>Status</th>
+                        <th>Nachweis im CV</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for skill in category.skills %}
+                    <tr>
+                        <td>{{ skill.skill }}</td>
+                        <td>{% if skill.found %}<span class="status-found">✓</span>{% else %}<span class="status-not-found">✗</span>{% endif %}</td>
+                        <td>{{ skill.evidence or '-' }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+    <!-- Should-Have Requirements -->
+    {% if requirements_matching.should_have %}
+    <div class="requirements-category should-have-category">
+        <h3>SHOULD-HAVE (30% Gewichtung)</h3>
+        {% for category in requirements_matching.should_have %}
+        <div class="requirement-category">
+            <h4>{{ category.category }} <span class="match-percentage">({{ category.category_match_percentage }}% Match)</span></h4>
+            <table class="requirements-table">
+                <thead>
+                    <tr>
+                        <th>Anforderung</th>
+                        <th>Status</th>
+                        <th>Nachweis im CV</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for skill in category.skills %}
+                    <tr>
+                        <td>{{ skill.skill }}</td>
+                        <td>{% if skill.found %}<span class="status-found">✓</span>{% else %}<span class="status-not-found">✗</span>{% endif %}</td>
+                        <td>{{ skill.evidence or '-' }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+    <!-- Nice-to-Have Requirements -->
+    {% if requirements_matching.nice_to_have %}
+    <div class="requirements-category nice-to-have-category">
+        <h3>NICE-TO-HAVE (10% Gewichtung)</h3>
+        {% for category in requirements_matching.nice_to_have %}
+        <div class="requirement-category">
+            <h4>{{ category.category }} <span class="match-percentage">({{ category.category_match_percentage }}% Match)</span></h4>
+            <table class="requirements-table">
+                <thead>
+                    <tr>
+                        <th>Anforderung</th>
+                        <th>Status</th>
+                        <th>Nachweis im CV</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for skill in category.skills %}
+                    <tr>
+                        <td>{{ skill.skill }}</td>
+                        <td>{% if skill.found %}<span class="status-found">✓</span>{% else %}<span class="status-not-found">✗</span>{% endif %}</td>
+                        <td>{{ skill.evidence or '-' }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+</div>
+
+<!-- Gap Analysis -->
+{% if gap_analysis %}
+<div class="gap-analysis-section">
+    <h2>🎯 Gap Analysis</h2>
+    
+    {% if gap_analysis.critical_missing %}
+    <div class="gap-box critical-gaps">
+        <h3>⚠️ Kritisch fehlende Skills (Must-Have)</h3>
+        <ul>
+            {% for skill in gap_analysis.critical_missing %}
+            <li>{{ skill }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    
+    {% if gap_analysis.nice_missing %}
+    <div class="gap-box nice-gaps">
+        <h3>💡 Fehlende Skills (Should/Nice-to-Have)</h3>
+        <ul>
+            {% for skill in gap_analysis.nice_missing %}
+            <li>{{ skill }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+    
+    {% if gap_analysis.strengths %}
+    <div class="gap-box strengths">
+        <h3>✨ Stärken für diese Position</h3>
+        <ul>
+            {% for strength in gap_analysis.strengths %}
+            <li>{{ strength }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endif %}
+</div>
+{% endif %}
+{% endif %}
+{% endif %}
+
+<!-- Standard CV Analysis (always shown) -->
+<div class="section">
+    <h2>👤 Persönliche Informationen</h2>
+    <div class="info-grid">
+        <div class="info-item">
+            <span class="label">Name:</span>
+            <span class="value">{{ analysis.personal.name or 'N/A' }}</span>
+        </div>
+        <div class="info-item">
+            <span class="label">Email:</span>
+            <span class="value">{{ analysis.personal.email or 'N/A' }}</span>
+        </div>
+        <div class="info-item">
+            <span class="label">Telefon:</span>
+            <span class="value">{{ analysis.personal.phone or 'N/A' }}</span>
+        </div>
+        <div class="info-item">
+            <span class="label">Standort:</span>
+            <span class="value">{{ analysis.personal.location or 'N/A' }}</span>
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <h2>💼 Berufserfahrung</h2>
+    {% if analysis.experience %}
+    <div class="experience-list">
+        {% for exp in analysis.experience %}
+        <div class="experience-card">
+            <div class="exp-header">
+                <div class="exp-title">
+                    {% if exp is mapping %}
+                        <h3>{{ exp.title or exp.get('title', 'Position') }}</h3>
+                        <div class="exp-company">{{ exp.company or exp.get('company', 'Unbekannt') }}</div>
+                        <div class="exp-duration">📅 {{ exp.duration or exp.get('duration', 'N/A') }}</div>
+                    {% else %}
+                        <div class="exp-text">{{ exp }}</div>
+                    {% endif %}
+                </div>
+            </div>
+            {% if exp is mapping and (exp.responsibilities or exp.get('responsibilities')) %}
+            <div class="exp-responsibilities">
+                <strong>Aufgaben & Verantwortlichkeiten:</strong>
+                <ul>
+                    {% for responsibility in (exp.responsibilities or exp.get('responsibilities', [])) %}
+                    <li>{{ responsibility }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="no-data">Keine Informationen verfügbar</p>
+    {% endif %}
+</div>
+
+<div class="section">
+    <h2>🎓 Ausbildung</h2>
+    {% if analysis.education %}
+    <div class="education-list">
+        {% for edu in analysis.education %}
+        <div class="education-card">
+            {% if edu is mapping %}
+            <div class="edu-header">
+                <h3>{{ edu.degree or edu.get('degree', 'Abschluss') }}</h3>
+                <div class="edu-field">{{ edu.field or edu.get('field', '') }}</div>
+            </div>
+            <div class="edu-details">
+                <div class="edu-institution">🏫 {{ edu.institution or edu.get('institution', 'N/A') }}</div>
+                <div class="edu-duration">📅 {{ edu.duration or edu.get('duration', 'N/A') }}</div>
+            </div>
+            {% if edu.focus or edu.get('focus') %}
+            <div class="edu-focus">
+                <strong>Schwerpunkte:</strong>
+                <div class="focus-tags">
+                    {% for focus_item in (edu.focus or edu.get('focus', [])) %}
+                    <span class="focus-tag">{{ focus_item }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+            {% else %}
+            <div class="edu-text">{{ edu }}</div>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p class="no-data">Keine Informationen verfügbar</p>
+    {% endif %}
+</div>
+
+<div class="section skills-section">
+    <h2>🛠️ Fähigkeiten</h2>
+    
+    {% if analysis.skills.technical %}
+    <div class="skill-category">
+        <h3>Technische Skills</h3>
+        <div class="skill-tags">
+            {% for skill in analysis.skills.technical %}
+            <span class="skill-tag">{{ skill }}</span>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    
+    {% if analysis.skills.soft %}
+    <div class="skill-category">
+        <h3>Soft Skills</h3>
+        <div class="skill-tags">
+            {% for skill in analysis.skills.soft %}
+            <span class="skill-tag soft">{{ skill }}</span>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+    
+    {% if analysis.skills.languages %}
+    <div class="skill-category">
+        <h3>Sprachen</h3>
+        <div class="skill-tags">
+            {% for lang in analysis.skills.languages %}
+            <span class="skill-tag language">{{ lang.language }}: {{ lang.level }}</span>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<!-- Extraction Stats -->
+{% if extraction_stats %}
+<div class="section metadata">
+    <h2>📊 Analyse-Details</h2>
+    <div class="info-grid small">
+        {% if _metadata %}
+        <div class="info-item">
+            <span class="label">Modell:</span>
+            <span class="value">{{ _metadata.model }}</span>
+        </div>
+        <div class="info-item">
+            <span class="label">Tokens:</span>
+            <span class="value">{{ _metadata.tokens_total }}</span>
+        </div>
+        <div class="info-item">
+            <span class="label">Kosten:</span>
+            <span class="value">${{ "%.4f"|format(_metadata.cost_estimate_usd) }}</span>
+        </div>
+        {% endif %}
+        <div class="info-item">
+            <span class="label">Seiten:</span>
+            <span class="value">{{ extraction_stats.num_pages }}</span>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+<!-- New Analysis Button -->
+<div class="actions">
+    <button class="btn btn-primary" onclick="clearResultsAndReload()">← Neuen CV analysieren</button>
+</div>
+
+<script>
+function clearResultsAndReload() {
+    fetch('/clear-results', { method: 'POST' })
+        .then(() => window.location.href = '/')
+        .catch(() => window.location.href = '/');
+}
+</script>
+
