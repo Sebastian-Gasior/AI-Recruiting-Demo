@@ -12,6 +12,11 @@ Dieses Projekt ist eine **Machbarkeitsstudie** und demonstriert:
 - Strukturierte Bewertung und Empfehlungen
 - Browser-basierte Ergebnis-Anzeige mit 4 Tabs
 
+## Warniung!!!
+Das ist eine Machbarkeitstudie und NICHT für den aktiven Gebrauch gedacht.
+Alle Daten werden von OpenAI analysiert und somit an das Unternehmen übergeben.
+Es sollte unbedingt mit den Demo-Lebensläufen gearbeitet werden!
+
 ## 🚀 Quick Start
 
 ### 1. Environment Setup (mit uv)
@@ -72,6 +77,39 @@ AI-Recruiting-Demo/
 │   └── job_requirements.py      # Job Requirements Loader
 └── docs/              # Projekt-Dokumentation
 ```
+
+## Projekt Bilder
+
+![AI-Recruting-DEMO](Bilder/00-AI-Recruting.jpg)
+
+**Upload & Auswertung**
+- Job Matching Score 
+- Gesamtbewertung (CV + Persönlichkeit) falls Persönlichkeits-Test absolviert
+- Anforderungen-Abgleich
+    - MUST-HAVE (60% Gewichtung)
+    - SHOULD-HAVE (30% Gewichtung)
+    - NICE-TO-HAVE (10% Gewichtung)
+- Gap Analysis
+- Persönliche Informationen
+- Berufserfahrung
+- Ausbildung
+- Fähigkeiten
+- INFO - Analyse-Details
+
+![Analyse-Ergebnisse](Bilder/01-Auswertung.jpg)
+
+**Stellenausschreibung**
+- MUST-HAVE ANFORDERUNGEN
+- SHOULD-HAVE ANFORDERUNGEN
+- NICE-TO-HAVE ANFORDERUNGEN
+
+![Stellenausschreibung](Bilder/02-Stellenausschreibung.jpg)
+
+**Persönlichkeitstest**
+- 30 Fragen
+- Optional
+
+![Big Five Persönlichkeitstest](Bilder/03-Big-Five-Profil.jpg)
 
 ## 🛠️ Tech Stack
 
